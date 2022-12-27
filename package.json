@@ -1,0 +1,78 @@
+{
+  "name": "restful-service",
+  "version": "0.0.0",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alex639hz/template-backend.git"
+  },
+  "scripts": {
+    "service:alert": "node ./server/utils/service.alert",
+    "service:tx_alert": "node ./server/utils/service.tx_alert",
+    "service:app": "node ./server/bin/www",
+    "dev": "clear && concurrently --kill-others \"npm run nodemon\"",
+    "dev:notification": "clear && concurrently --kill-others \"npm run service:alert\" \"npm run nodemon\"",
+    "nodemon": "node ./node_modules/nodemon/bin/nodemon.js ",
+    "start": "clear && concurrently --kill-others \"npm run service:alert\" \"npm run service:app\"",
+    "test": "clear && ./node_modules/jest/bin/jest.js ./tests/main.test.js --forceExit  --detectOpenHandles",
+    "test:account": "clear && ./node_modules/jest/bin/jest.js ./tests/account.test.js --forceExit  --detectOpenHandles",
+    "test:account:alert": "clear &&   ./node_modules/jest/bin/jest.js ./tests/account.test.js --forceExit  --detectOpenHandles",
+    "test:notification": "clear && concurrently --kill-others \"npm run alert-service\" \"npm run test\"",
+    "test:account:notification": "clear && concurrently --kill-others \"npm run service:tx_alert\" \"npm run test:account\"",
+    "close_port": "kill $(lsof -t -i:6379)",
+    "redis": "redis-server",
+    "git:set_remote": "git remote set-url origin https://alex639hz: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@github.com/alex639hz/template-backend"
+  },
+  "dependencies": {
+    "@types/mongodb": "^4.0.7",
+    "@types/mongoose": "^5.11.97",
+    "axios": "^0.23.0",
+    "compress": "^0.99.0",
+    "compression": "^1.7.4",
+    "concurrently": "^6.2.1",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "cron": "^2.1.0",
+    "debug": "~2.6.9",
+    "elliptic": "^6.5.4",
+    "express": "~4.16.1",
+    "express-jwt": "^6.0.0",
+    "express-ws": "^4.0.0",
+    "formidable": "^1.2.2",
+    "helmet": "^4.2.0",
+    "ioredis": "^4.27.9",
+    "js-sha3": "^0.8.0",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "mongoose": "^6.0.10",
+    "morgan": "~1.9.1",
+    "node-telegram-bot-api": "^0.60.0",
+    "nodemon": "^2.0.13",
+    "request": "^2.88.2",
+    "secp256k1": "^4.0.2",
+    "swagger-jsdoc": "^6.1.0",
+    "swagger-ui-express": "^4.1.6",
+    "telegraf": "^4.11.2",
+    "telegraf-inline-menu": "^6.3.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "jest": "^26.6.3",
+    "superagent": "^6.1.0",
+    "supertest": "^6.1.6"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "verbose": true,
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  },
+  "nodemonConfig": {
+    "watch": [
+      "./server"
+    ],
+    "delay": 2,
+    "exec": "node ./server/bin/www"
+  }
+}

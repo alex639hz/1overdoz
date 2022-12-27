@@ -1,0 +1,17 @@
+version: '3'
+services:
+  myApp:
+    container_name: myApp-main
+    restart: always
+    build: .
+    ports:
+      - '3000:3000'
+    links:
+      - redis
+      - mongo
+  mongo:
+    container_name: myApp-mongo
+    image: 'mongo:4'
+  redis:
+    container_name: myApp-redis
+    image: 'redis:4.0.11'

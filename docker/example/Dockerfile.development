@@ -1,0 +1,19 @@
+FROM node:latest
+
+RUN mkdir -p /myApp/node_modules && chown -R node:node /myApp
+WORKDIR /myApp
+
+COPY package*.json /myApp
+
+USER node
+
+RUN npm install
+
+ADD https://github.com/alex639hz/myApp.git .
+# COPY --chown=node:node .. .
+
+RUN chmod +x .
+
+EXPOSE 3000
+
+CMD npm run dev

@@ -1,0 +1,701 @@
+{
+  "info": {
+    "_postman_id": "9d055dbd-b7e5-40f1-a5a5-b9717be6da73",
+    "name": "myApp",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "auth/signin",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const response = pm.response.json()",
+              "",
+              "pm.collectionVariables.set(\"token\", response.token)",
+              "",
+              "pm.collectionVariables.set(\"userId\", response._id)",
+              "//pm.environment.set(\"user\", response.payload.user);",
+              "//pm.environment.set();",
+              "//console.log(\"userId:\" + response.payload._id)",
+              "//console.log('headers' ,pm.response.headers)",
+              "console.log(pm.cookies)",
+              "//console.log(response)",
+              "//pm.collectionVariables.set()"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"email\":\"a@a.a\",\n    \"password\":\"aaaaaa\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{site}}/api/auth/signin",
+          "host": [
+            "{{site}}"
+          ],
+          "path": [
+            "api",
+            "auth",
+            "signin"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "auth/signup",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"email\":\"a@a.a\",\n    \"password\":\"aaaaaa\",\n    \"role\":\"moderator\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{site}}/api/user",
+          "host": [
+            "{{site}}"
+          ],
+          "path": [
+            "api",
+            "user"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "auth/secured-api-example",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"email\":\"a@a.a\",\n    \"password\":\"aaaaaa\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{site}}/api/auth/secured-api-example",
+          "host": [
+            "{{site}}"
+          ],
+          "path": [
+            "api",
+            "auth",
+            "secured-api-example"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Keyword/create",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//pm.environment.set(\"imageId\", response._id);",
+              "//console.log(\"e:\" + response._id)"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "[\"word5645\",\"a\",\"b\"]",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{site}}/api/keyword",
+          "host": [
+            "{{site}}"
+          ],
+          "path": [
+            "api",
+            "keyword"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Keyword/list",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//pm.environment.set(\"imageId\", response._id);",
+              "//console.log(\"e:\" + response._id)"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "[\"word5645\",\"a\",\"b\"]",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{site}}/api/keyword",
+          "host": [
+            "{{site}}"
+          ],
+          "path": [
+            "api",
+            "keyword"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Community/create",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"title\":\"public-group\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{site}}/api/community/",
+          "host": [
+            "{{site}}"
+          ],
+          "path": [
+            "api",
+            "community",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Community/list",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const response = pm.response.json()",
+              "",
+              "pm.collectionVariables.set(\"communityTitle\", response[0].title)",
+              "",
+              "console.log( response[0])"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"title\":\"public-group\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{site}}/api/community/",
+          "host": [
+            "{{site}}"
+          ],
+          "path": [
+            "api",
+            "community",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Post/create",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//pm.environment.set(\"imageId\", response._id);",
+              "//console.log(\"e:\" + response._id)"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"post\": {\n        \"title\":\"my post title-448755\",\n        \"body\":\"my post body text word1 word2 word3 \"\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{site}}/api/post",
+          "host": [
+            "{{site}}"
+          ],
+          "path": [
+            "api",
+            "post"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Community/member-request",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//pm.environment.set(\"imageId\", response._id);",
+              "//console.log(\"e:\" + response._id)"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"post\": {\n        \"title\":\"my post title-448755\",\n        \"body\":\"my post body text word1 word2 word3 \"\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{site}}/api/community/member-request/{{communityTitle}}",
+          "host": [
+            "{{site}}"
+          ],
+          "path": [
+            "api",
+            "community",
+            "member-request",
+            "{{communityTitle}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Community/member-approve",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//pm.environment.set(\"imageId\", response._id);",
+              "//console.log(\"e:\" + response._id)"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"pendingMember\":  \"{{userId}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{site}}/api/community/member-approve/{{communityTitle}}",
+          "host": [
+            "{{site}}"
+          ],
+          "path": [
+            "api",
+            "community",
+            "member-approve",
+            "{{communityTitle}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Post/list",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//pm.environment.set(\"imageId\", response._id);",
+              "//console.log(\"e:\" + response._id)"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"community\":\"public-group-\",\n    \"post\": {\n        \"title\":\"my post title-875q3565955\",\n        \"body\":\"my post body text word1 word2 word3 \"\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{site}}/api/post/{{communityTitle}}",
+          "host": [
+            "{{site}}"
+          ],
+          "path": [
+            "api",
+            "post",
+            "{{communityTitle}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "user/list",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const response = pm.response.json()",
+              "",
+              "//pm.environment.set(\"token\", response.token);",
+              "//pm.environment.set(\"user\", response.user);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"email\":\"d@d.d\",\n    \"password\":\"dddddd\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{site}}/api/user",
+          "host": [
+            "{{site}}"
+          ],
+          "path": [
+            "api",
+            "user"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "user/read",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//const response = pm.response.json()",
+              "",
+              "//pm.environment.set(\"token\", response.token);",
+              "//pm.environment.set(\"user\", response.user);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"email\":\"d@d.d\",\n    \"password\":\"dddddd\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{site}}/api/user/{{userId}}",
+          "host": [
+            "{{site}}"
+          ],
+          "path": [
+            "api",
+            "user",
+            "{{userId}}"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "auth": {
+    "type": "bearer"
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "site",
+      "value": "\nlocalhost:3000"
+    },
+    {
+      "key": "token",
+      "value": ""
+    },
+    {
+      "key": "userId",
+      "value": ""
+    },
+    {
+      "key": "userId",
+      "value": ""
+    },
+    {
+      "key": "communityTitle",
+      "value": ""
+    }
+  ]
+}
