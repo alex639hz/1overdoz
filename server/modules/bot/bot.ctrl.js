@@ -152,7 +152,9 @@ function bot1() {
 
   const menuTemplate = _getGenderMenu();
   const menuMiddleware = new MenuMiddleware("/", menuTemplate);
-  const bot = new Telegraf("5962551933:AAH4mIVAHqB635oy37p0QrNUKJAawhh5yTc");
+
+  
+  const bot = new Telegraf(process.env.BOT_API);
   bot.command("/begin", _onBegin);
   bot.command("/newuser", _createUserFromMessage);
   bot.command("/gender", (ctx) => menuMiddleware.replyToContext(ctx));

@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+require("dotenv").config();
 
 const config = require('../config/config');
 const port = normalizePort(process.env.PORT || '3000');
